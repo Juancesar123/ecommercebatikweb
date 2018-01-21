@@ -1,0 +1,58 @@
+<div class="box box-primary">
+  <div class="box-header">
+    <button class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Tambah Data</button>
+  </div>
+  <div class="box-body">
+      <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Masukkan Barang</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label>Nama Barang</label>
+                  <input class="form-control" [(ngModel)]="nama">
+                </div>
+                <div class="form-group">
+                    <label>Keterangan</label>
+                    <textarea class="form-control" [(ngModel)]="keterangan"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Warna </label>
+                    <input class="form-control" [(ngModel)]="warna">
+                </div>
+                <div class="form-group">
+                    <label>Harga </label>
+                    <input class="form-control" [(ngModel)]="harga">
+                  </div>
+                  <div class="form-group">
+                    <label>Stok </label>
+                    <input class="form-control" [(ngModel)]="stok">
+                  </div>
+                  <div class="form-group">
+                      <label>Berat </label>
+                      <input class="form-control" [(ngModel)]="berat">
+                  </div>
+                  <div class="form-group">
+                      <label>Gambar </label>
+                      <input class="form-control" [(ngModel)]="gambar">
+                  </div>
+                  <div class="form-group">
+                      <label>Ukuran </label>
+                      <input class="form-control" [(ngModel)]="ukuran">
+                  </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="button" class="btn btn-primary"><i class="fa fa-send"></i> Simpan</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+  </div>
+</div>
