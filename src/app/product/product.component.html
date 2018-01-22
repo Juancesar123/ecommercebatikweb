@@ -39,7 +39,7 @@
                   </div>
                   <div class="form-group">
                       <label>Gambar </label>
-                      <input class="form-control" [(ngModel)]="gambar">
+                      <input type="file" class="form-control" (change)="onFileChange($event)">
                   </div>
                   <div class="form-group">
                       <label>Ukuran </label>
@@ -47,12 +47,91 @@
                   </div>
               </div>
               <div class="modal-footer">
-                  <button type="button" class="btn btn-primary"><i class="fa fa-send"></i> Simpan</button>
+                  <button type="button" class="btn btn-primary" (click)="SaveDataProduct()"><i class="fa fa-send"></i> Simpan</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
         
           </div>
         </div>
+        <div id="myModal1" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+          
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Ubah Data Barang</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label>Nama Barang</label>
+                    <input class="form-control" [(ngModel)]="nama">
+                  </div>
+                  <div class="form-group">
+                      <label>Keterangan</label>
+                      <textarea class="form-control" [(ngModel)]="keterangan"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label>Warna </label>
+                      <input class="form-control" [(ngModel)]="warna">
+                  </div>
+                  <div class="form-group">
+                      <label>Harga </label>
+                      <input class="form-control" [(ngModel)]="harga">
+                    </div>
+                    <div class="form-group">
+                      <label>Stok </label>
+                      <input class="form-control" [(ngModel)]="stok">
+                    </div>
+                    <div class="form-group">
+                        <label>Berat </label>
+                        <input class="form-control" [(ngModel)]="berat">
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar </label>
+                        <input type="file" class="form-control" (change)="onFileChange($event)">
+                    </div>
+                    <div class="form-group">
+                        <label>Ukuran </label>
+                        <input class="form-control" [(ngModel)]="ukuran">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" (click)="UpdateDataProduct()"><i class="fa fa-send"></i> Simpan</button>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+          
+            </div>
+          </div>
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">  
+          <thead>
+              <tr>
+                  <th>Nama Barang</th>
+                  <th>Ukuran</th>
+                  <th>Berat</th>
+                  <th>Harga</th>
+                  <th>Keterangan</th>
+                  <th>Warna</th>
+                  <th>Stok</th>
+                  <th>Gambar</th>
+                  <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let productlist of dataproduct">
+                    <td>{{ productlist.namabarang }}</td>
+                    <td>{{ productlist.ukuran }}</td>
+                    <td>{{ productlist.berat }}</td>
+                    <td>{{ productlist.harga }}</td>
+                    <td>{{ productlist.keterangan }}</td>
+                    <td>{{ productlist.warna }}</td>
+                    <td>{{ productlist.stotk }}</td>
+                    <td><img src="{{apiendpoint}}/{{productlist.gambar }}" width="100" height="100"></td>
+                    <td><button class="btn btn-success " data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit"></i> Ubah</button><button class="btn btn-danger" (click)="DeleteProduct(productlist)"><i class="fa fa-trash"></i> Hapus</button></td> 
+                </tr>
+            </tbody>
+        </table>
   </div>
 </div>
