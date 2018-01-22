@@ -129,7 +129,7 @@
                     <td>{{ productlist.warna }}</td>
                     <td>{{ productlist.stotk }}</td>
                     <td><img src="{{apiendpoint}}/{{productlist.gambar }}" width="100" height="100"></td>
-                    <td><button class="btn btn-success " data-toggle="modal" data-target="#myModal1"><i class="fa fa-edit"></i> Ubah</button><button class="btn btn-danger" (click)="DeleteProduct(productlist)"><i class="fa fa-trash"></i> Hapus</button></td> 
+                    <td><button class="btn btn-success " data-toggle="modal" data-target="#myModal1" (click)="formfilled(productlist)"><i class="fa fa-edit"></i> Ubah</button><button class="btn btn-danger" (click)="DeleteProduct(productlist)"><i class="fa fa-trash"></i> Hapus</button></td> 
                 </tr>
             </tbody>
         </table>

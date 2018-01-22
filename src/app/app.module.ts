@@ -1,3 +1,4 @@
+import { AuthlinkGuard } from './authlink.guard';
 import { appRouterModule } from './app.routes';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +15,9 @@ import { ProductComponent } from './product/product.component';
 import { DataTablesModule } from 'angular-datatables';
 import { NgProgressModule } from '@ngx-progressbar/core';
 import { NgProgressRouterModule } from '@ngx-progressbar/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +25,10 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
     FooterComponent,
     HeaderComponent,
     HomepagedashboardComponent,
-    ProductComponent
+    ProductComponent,
+    DashboardComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +41,7 @@ import { NgProgressRouterModule } from '@ngx-progressbar/router';
     HttpModule,
     ChartModule
   ],
-  providers: [],
+  providers: [AuthlinkGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

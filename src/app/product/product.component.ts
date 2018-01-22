@@ -17,7 +17,9 @@ import { DataTableDirective } from 'angular-datatables';
 
 
 export class ProductComponent implements OnInit,AfterViewInit {
-  dtOptions: DataTables.Settings = {};
+  @ViewChild(DataTableDirective)
+  dtElement: DataTableDirective;
+  dtOptions: any = {};
   dataproduct;
   apiendpoint:any = Configendpoint.endpointapi;
   fileToUpload: File = null;
@@ -32,22 +34,26 @@ export class ProductComponent implements OnInit,AfterViewInit {
   stok:String;
   berat:String;
   data:any;
+  id:String;
   ukuran:String;
   constructor(public productservices:ProductService) { }
   
   ngOnInit(){
     this.productservices.getDataProduct().subscribe(val =>{
-      this.dtOptions = {
-        pagingType: 'full_numbers',
-        pageLength: 2
-
-      };
-      this.dataproduct = val;
-      
-      this.dtInstance.destroy();
-      // Calling the DT trigger to manually render the table
-      this.dtTrigger.next();
-
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        this.dtOptions = {
+          pagingType: 'full_numbers',
+          pageLength: 2,
+          responsive: true
+  
+        };
+        // Destroy the table first
+        this.dataproduct = val;
+        // Calling the DT trigger to manually render the table
+        dtInstance.destroy();
+        // Call the dtTrigger to rerender again
+        this.dtTrigger.next();
+      });
     })
   }
   onFileChange(event) {
@@ -64,7 +70,7 @@ export class ProductComponent implements OnInit,AfterViewInit {
     })
   }
   SaveDataProduct(){
-    this.data = {namabarang:this.nama,keterangan:this.keterangan,warna:this.warna,berat:this.berat,stok:this.stok,ukuran:this.ukuran}
+    this.data = {namabarang:this.nama,keterangan:this.keterangan,warna:this.warna,berat:this.berat,stok:this.stok,ukuran:this.ukuran,harga:this.harga}
     this.productservices.SaveProduct(this.data,this.fileToUpload).subscribe(val => {
       alert('data sukses di simpan');  
       this.GetDataProduct();
@@ -96,6 +102,24 @@ export class ProductComponent implements OnInit,AfterViewInit {
       // Call the dtTrigger to rerender again
       this.dtTrigger.next();
     });
+  }
+  formfilled(productlist){
+    this.nama = productlist.namabarang;
+    this.berat = productlist.berat;
+    this.stok = productlist.stotk;
+    this.warna = productlist.warna;
+    this.keterangan = productlist.keterangan;
+    this.harga = productlist.harga;
+    this.ukuran = productlist.ukuran;
+    this.fileToUpload = productlist.gambar;
+    this.id = productlist.id;
+  }
+  UpdateDataProduct(){
+    let id = this.id
+    this.data = {namabarang:this.nama,keterangan:this.keterangan,warna:this.warna,berat:this.berat,stok:this.stok,ukuran:this.ukuran,harga:this.harga} 
+    this.productservices.UpdateData(this.data,this.fileToUpload,id).subscribe(val =>{
+      this.GetDataProduct();
+    })
   }
   
 }
