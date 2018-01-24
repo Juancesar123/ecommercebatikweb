@@ -1,0 +1,16 @@
+<div class="row">
+<div class="col-md-6">
+  <div class="form-group">
+    <label>Search periode</label>
+    <input type="date" class="form-control" [(ngModel)]="cari" (change)="FilterDataDate()">
+  </div>
+</div>
+</div>
+  <div class="box box-primary">
+    <div class="box-header">
+
+    </div>
+    <div class="box-body">
+      <div [chart]="chart"></div>
+    </div>
+  </div>

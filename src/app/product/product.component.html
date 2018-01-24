@@ -120,7 +120,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let productlist of dataproduct">
+                <tr *ngFor="let productlist of dataproduct; trackBy:identify">
                     <td>{{ productlist.namabarang }}</td>
                     <td>{{ productlist.ukuran }}</td>
                     <td>{{ productlist.berat }}</td>

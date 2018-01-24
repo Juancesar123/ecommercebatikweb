@@ -56,6 +56,10 @@ export class ProductComponent implements OnInit,AfterViewInit {
       });
     })
   }
+  identify(index,item){
+    //do what ever logic you need to come up with the unique identifier of your item in loop, I will just return the object id.
+    return item.id 
+   }
   onFileChange(event) {
     if(event.target.files.length > 0) {
       this.fileToUpload = event.target.files[0];

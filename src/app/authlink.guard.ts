@@ -8,10 +8,9 @@ export class AuthlinkGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-      if(localStorage.getItem('data') == null){
-        return this.router.navigate(['/login'])
-      }else{
-        return true;
+      if(localStorage.getItem('token') == null){
+         return this.router.navigate(['/login'])
       }
+        return true;
   }
 }

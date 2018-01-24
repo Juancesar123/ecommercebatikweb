@@ -1,3 +1,7 @@
+import { HistorytransaksiComponent } from './historytransaksi/historytransaksi.component';
+import { HistorytransaksiService } from './historytransaksi.service';
+import { DatatransaksiComponent } from './datatransaksi/datatransaksi.component';
+import { LaporanpenjualanComponent } from './laporanpenjualan/laporanpenjualan.component';
 import { AuthlinkGuard } from './authlink.guard';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -13,17 +17,33 @@ const routes: Routes = [
     // map '/persons' to the people list component
     {
       path: 'dashboard',
-      component: DashboardComponent,
+      //loadChildren: 'app/dashboard/dashboard.module#DashboardModule',
+      component:DashboardComponent,
       canActivate:[AuthlinkGuard],
       children:[
         {
           path:'home',
-          component:HomepagedashboardComponent,
+          loadChildren: 'app/homepagedashboard/homepage.module#HomepageModule',
           canActivate:[AuthlinkGuard]
         },   
         {
           path: 'dataproduct',
-          component: ProductComponent,
+          loadChildren: 'app/product/dataproduct.module#DataproductModule',
+          canActivate: [AuthlinkGuard],
+        },
+        {
+          path: 'laporanpenjualan',
+          loadChildren: 'app/laporanpenjualan/laporanpenjualan.module#LaporanPenjualanModule',
+          canActivate: [AuthlinkGuard],
+        },
+        {
+          path: 'datatransaksi',
+          loadChildren: 'app/datatransaksi/datatransaksi.module#DataTransaksiModule',
+          canActivate: [AuthlinkGuard],
+        },
+        {
+          path: 'historytransaksi',
+          loadChildren: 'app/historytransaksi/historytransaksi.module#HistoryTransaksiModule',
           canActivate: [AuthlinkGuard],
         },
         {
@@ -41,11 +61,11 @@ const routes: Routes = [
     },
     {
       path:'login',
-      component:LoginComponent
+      loadChildren: 'app/login/login.module#LoginModule',
     },
     {
       path:'register',
-      component:RegisterComponent
+      loadChildren: 'app/register/register.module#RegisterModule',
     }
   ];
   export const appRouterModule = RouterModule.forRoot(routes);

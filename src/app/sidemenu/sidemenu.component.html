@@ -35,7 +35,7 @@
       </li>
       <li class="active treeview menu-open">
         <a href="">
-          <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          <i class="fa fa-book"></i> <span>Laporan</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left pull-right"></i>
           </span>
@@ -55,6 +55,18 @@
           <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="dataproduct"><i class="fa fa-circle-o"></i> Data Product</a></li>
         </ul>
       </li>
+      <li class="treeview">
+          <a href="">
+            <i class="fa fa-shopping-cart"></i> <span>Transaksi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="datatransaksi"><i class="fa fa-circle-o"></i> Data Transaksi</a></li>
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink="historytransaksi"><i class="fa fa-circle-o"></i> History Transaksi</a></li>
+          </ul>
+        </li>
       <li>
         <a href="pages/widgets.html">
           <i class="fa fa-th"></i> <span>Widgets</span>
